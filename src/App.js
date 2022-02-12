@@ -1,8 +1,20 @@
+import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from '@apollo/client';
 import React from 'react';
 import { render } from 'react-dom';
+import Root from './client/components/root/Root';
 
-function App() {
-    return <h1>Menu Test</h1>;
-}
+const httpLink = new HttpLink({ uri: 'http://localhost:3000/graphql' });
+const client = new ApolloClient({
+    link: httpLink,
+    cache: new InMemoryCache(),
+    fetchOptions: {
+        mode: 'no-cors',
+    },
+});
 
-render(<App />, document.getElementById('root'));
+render(
+    <ApolloProvider client={client}>
+        <Root />
+    </ApolloProvider>,
+    document.getElementById('root')
+);
