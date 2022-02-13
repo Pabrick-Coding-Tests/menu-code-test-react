@@ -1,55 +1,18 @@
-import { gql, useQuery } from '@apollo/client';
 import React from 'react';
-
-const MENU_QUERY = gql`
-    {
-        menu {
-            starters {
-                id
-                name
-                price
-            }
-            mains {
-                id
-                name
-                price
-            }
-            desserts {
-                id
-                name
-                price
-            }
-        }
-    }
-`;
+import { HashRouter, Route, Routes } from 'react-router-dom';
+import Bill from '../bill/Bill';
+import Landing from '../landing/Landing';
+import Menu from '../menu/Menu';
 
 const Root = () => {
-    const { data, loading, error } = useQuery(MENU_QUERY);
-
-    if (loading) {
-        console.log('loading');
-    }
-
-    if (error) {
-        console.log('error', error.message);
-    }
-
-    console.log('data', data);
-
-    if (data) {
-        return data.menu.starters.map(({ id, name, price }) => (
-            <div key={id}>
-                <p>
-                    {id}: {name} / {price}
-                </p>
-            </div>
-        ));
-    }
-
     return (
-        <main>
-            <h1>Menu Test</h1>
-        </main>
+        <HashRouter>
+            <Routes>
+                <Route exact path="/" element={<Landing />}></Route>
+                <Route exact path="/menu" element={<Menu />}></Route>
+                <Route exact path="/bill" element={<Bill />}></Route>
+            </Routes>
+        </HashRouter>
     );
 };
 
