@@ -1,28 +1,10 @@
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import MenuDishButton from './../menu-dish-button/MenuDishButton';
+import { MENU_QUERY } from './menu.query.js';
 
-const MENU_QUERY = gql`
-    {
-        menu {
-            starters {
-                id
-                name
-                price
-            }
-            mains {
-                id
-                name
-                price
-            }
-            desserts {
-                id
-                name
-                price
-            }
-        }
-    }
-`;
+const PEOPLE_PARTY = 2;
 
 const Menu = () => {
     const { data, loading, error } = useQuery(MENU_QUERY);
@@ -35,38 +17,43 @@ const Menu = () => {
         console.log('error', error.message);
     }
 
-    console.log('data', data);
-
     const dishList = (list) =>
         list.map(({ id, name, price }) => (
-            <div key={id}>
-                <p>
-                    {id}: {name} / {price}
-                </p>
-            </div>
+            <li key={id}>
+                <MenuDishButton id={id} name={name} price={price} />
+            </li>
         ));
 
-    if (data) {
-        return (
-            <main>
-                <h1>Menu Test</h1>
-                <h2>Starters</h2>
-                {dishList(data.menu.starters)}
-                <hr></hr>
-                <h2>Mains</h2>
-                {dishList(data.menu.mains)}
-                <hr></hr>
-                <h2>Desserts</h2>
-                {dishList(data.menu.desserts)}
-                <hr></hr>
-                <Link to="/bill">Check the bill</Link>
-            </main>
-        );
-    }
+    const courseList = (title, list) => (
+        <div className="course">
+            <h2 className="course__title">{title}</h2>
+            <ul className="course__list">{dishList(list)}</ul>
+        </div>
+    );
+
+    const menuTemplate = () => {
+        if (data) {
+            return (
+                <div>
+                    {courseList('Starters', data.menu.starters)}
+                    <hr></hr>
+                    {courseList('Mains', data.menu.mains)}
+                    <hr></hr>
+                    {courseList('Desserts', data.menu.desserts)}
+                </div>
+            );
+        }
+    };
 
     return (
         <main>
-            <h1>Menu Test</h1>
+            <section className="menu">
+                <h1 className="menu__title">'Le Menu'</h1>
+                <div className="menu__courses">{menuTemplate()}</div>
+            </section>
+            <section className="party">
+                <Link to="/bill">Check the bill</Link>
+            </section>
         </main>
     );
 };
