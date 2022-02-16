@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import MenuDishButton from './../menu-dish-button/MenuDishButton';
+import MenuDishConnector from './../menu-dish-button/MenuDishConnector';
 import { MENU_QUERY } from './menu.query.js';
 
 const PEOPLE_PARTY = 2;
@@ -20,7 +20,7 @@ const Menu = () => {
     const dishList = (list) =>
         list.map(({ id, name, price }) => (
             <li key={id}>
-                <MenuDishButton id={id} name={name} price={price} />
+                <MenuDishConnector id={id} name={name} price={price} />
             </li>
         ));
 

@@ -15,6 +15,10 @@
         'name        price'
         'description price';
 
+    &.selected {
+        background: red;
+    }
+
     .name {
         grid-area: name;
         text-align: left;
