@@ -1,10 +1,8 @@
 import { useQuery } from '@apollo/client';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { MENU_QUERY } from './../../querys/menu.query';
+import BillConnector from './../bill/BillConnector';
 import MenuDishConnector from './../menu-dish-button/MenuDishConnector';
-import { MENU_QUERY } from './menu.query.js';
-
-const PEOPLE_PARTY = 2;
 
 const Menu = () => {
     const { data, loading, error } = useQuery(MENU_QUERY);
@@ -52,7 +50,7 @@ const Menu = () => {
                 <div className="menu__courses">{menuTemplate()}</div>
             </section>
             <section className="party">
-                <Link to="/bill">Check the bill</Link>
+                <BillConnector></BillConnector>
             </section>
         </main>
     );

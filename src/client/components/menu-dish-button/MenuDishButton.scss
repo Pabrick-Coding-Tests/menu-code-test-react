@@ -4,6 +4,7 @@
     border-color: transparent;
     border-width: 2px;
     cursor: pointer;
+    transition: all 0.2s linear;
 
     width: 100%;
     display: grid;
@@ -14,10 +15,6 @@
     grid-template-areas:
         'name        price'
         'description price';
-
-    &.selected {
-        background: red;
-    }
 
     .name {
         grid-area: name;

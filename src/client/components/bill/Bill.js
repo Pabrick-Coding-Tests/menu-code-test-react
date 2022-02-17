@@ -1,16 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { COLOURS } from './../../utils/colours.const';
+import './Bill.scss';
 
-const Bill = () => (
-    <section>
-        <h1>Bill Test</h1>
-        <div>
-            <Link to="/menu">Back to Menu</Link>
-        </div>
-        <div>
-            <Link to="/">Order meal</Link>
-        </div>
-    </section>
-);
+const Bill = ({ quantity, amount, selected, selectPartyMember }) => {
+    const isSelected = (i) => selected === i + 1;
+    const guestList = (limit) =>
+        new Array(limit).fill('_').map((_, index) => (
+            <button
+                key={index}
+                className={`${isSelected(index) ? 'selected' : ''}`}
+                style={{ backgroundColor: ` ${isSelected(index) ? COLOURS[index] : 'transparent'}` }}
+                onClick={() => {
+                    selectPartyMember(index + 1);
+                }}
+            >
+                {`Guest ${index + 1}`}
+            </button>
+        ));
+
+    return (
+        <section className="bill">
+            <div className="guests">{guestList(quantity)}</div>
+            <div className={`amount ${amount ? 'show' : ''}`}>£ {amount}</div>
+        </section>
+    );
+};
 
 export default Bill;

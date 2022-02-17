@@ -1,13 +1,16 @@
 import React from 'react';
-import { DESCRIPTIONS } from '../../utils/descriptions';
+import { COLOURS } from '../../utils/colours.const';
+import { DESCRIPTIONS } from '../../utils/descriptions.const';
 import './MenuDishButton.scss';
 
-const MenuDishButton = ({ active, id, name, price, addDish, removeDish }) => {
-    const toggleButton = () => {
-        return active ? removeDish(id) : addDish(id);
-    };
+const MenuDishButton = ({ active, guest, id, name, price, addDish, removeDish }) => {
+    const toggleButton = () => (active ? removeDish() : addDish());
     return (
-        <button className={`dish ${active ? 'selected' : ''}`} onClick={toggleButton}>
+        <button
+            className={`dish ${active ? 'selected' : ''}`}
+            style={{ backgroundColor: ` ${active ? COLOURS[guest] : 'transparent'}` }}
+            onClick={toggleButton}
+        >
             <div className="name">{name}</div>
             <div className="description">{DESCRIPTIONS[id - 1]}</div>
             <div className="price">{price}</div>

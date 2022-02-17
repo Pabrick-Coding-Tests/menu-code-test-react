@@ -3,6 +3,7 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 import Bill from '../bill/Bill';
 import Landing from '../landing/Landing';
 import Menu from '../menu/Menu';
+import './../../styles/index.scss';
 
 const Root = () => {
     return (
