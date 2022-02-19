@@ -1,8 +1,8 @@
 const initState = {
     quantity: 2,
-    selected: 1,
+    guest: 1,
     amount: 0,
-    list: [[], []],
+    diner: [],
 };
 
 export default initState;

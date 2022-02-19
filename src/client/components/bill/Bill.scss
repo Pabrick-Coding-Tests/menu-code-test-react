@@ -1,29 +1,4 @@
 .bill {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: gray;
-    padding: 10px;
+    position: absolute;
     box-sizing: border-box;
-
-    display: grid;
-    grid-template-columns: auto auto;
-    align-items: center;
-
-    .guests {
-        button {
-            margin-right: 10px;
-            transition: all 0.2s linear;
-        }
-    }
-
-    .amount {
-        text-align: right;
-        opacity: 0;
-        transition: all 0.2s linear;
-
-        &.show {
-            opacity: 1;
-        }
-    }
 }

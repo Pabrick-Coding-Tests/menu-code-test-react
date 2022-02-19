@@ -1,58 +1,51 @@
 import { useQuery } from '@apollo/client';
-import React from 'react';
+import React, { useEffect } from 'react';
+import DishConnector from '../dish/Dish.connector';
 import { MENU_QUERY } from './../../querys/menu.query';
-import BillConnector from './../bill/BillConnector';
-import MenuDishConnector from './../menu-dish-button/MenuDishConnector';
+import './Menu.scss';
 
-const Menu = () => {
-    const { data, loading, error } = useQuery(MENU_QUERY);
+const Menu = ({ quantity, diner, initDiner }) => {
+    const { data } = useQuery(MENU_QUERY);
 
-    if (loading) {
-        console.log('loading');
-    }
+    useEffect(() => {
+        if (diner.length === 0) {
+            initDiner(quantity);
+        }
+    }, []);
 
-    if (error) {
-        console.log('error', error.message);
-    }
-
-    const dishList = (list) =>
+    const dishTemplate = (list) =>
         list.map(({ id, name, price }) => (
             <li key={id}>
-                <MenuDishConnector id={id} name={name} price={price} />
+                <DishConnector id={id} name={name} price={price} />
             </li>
         ));
 
-    const courseList = (title, list) => (
-        <div className="course">
+    const courseTemplate = (title, list) => (
+        <article className="course">
             <h2 className="course__title">{title}</h2>
-            <ul className="course__list">{dishList(list)}</ul>
-        </div>
+            <ul className="course__list">{dishTemplate(list)}</ul>
+        </article>
     );
 
     const menuTemplate = () => {
         if (data) {
             return (
                 <div>
-                    {courseList('Starters', data.menu.starters)}
+                    {courseTemplate('Starters', data.menu.starters)}
                     <hr></hr>
-                    {courseList('Mains', data.menu.mains)}
+                    {courseTemplate('Mains', data.menu.mains)}
                     <hr></hr>
-                    {courseList('Desserts', data.menu.desserts)}
+                    {courseTemplate('Desserts', data.menu.desserts)}
                 </div>
             );
         }
     };
 
     return (
-        <main>
-            <section className="menu">
-                <h1 className="menu__title">'Le Menu'</h1>
-                <div className="menu__courses">{menuTemplate()}</div>
-            </section>
-            <section className="party">
-                <BillConnector></BillConnector>
-            </section>
-        </main>
+        <section className="menu">
+            <h1 className="menu__title">'Le Menu'</h1>
+            <div className="menu__courses">{menuTemplate()}</div>
+        </section>
     );
 };
 

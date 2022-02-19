@@ -1,20 +1,24 @@
 import React from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
-import Bill from '../bill/Bill';
-import Landing from '../landing/Landing';
-import Menu from '../menu/Menu';
-import './../../styles/index.scss';
+import BillConnector from '../bill/Bill.connector';
+import LandingConnector from '../landing/Landing.connector';
+import MenuConnector from '../menu/Menu.connector';
+import PartyConnector from './../Party/Party.connector';
+import './Root.scss';
 
-const Root = () => {
-    return (
-        <HashRouter>
+const Root = () => (
+    <HashRouter>
+        <main className="main">
             <Routes>
-                <Route exact path="/" element={<Landing />}></Route>
-                <Route exact path="/menu" element={<Menu />}></Route>
-                <Route exact path="/bill" element={<Bill />}></Route>
+                <Route exact path="/" element={<LandingConnector />}></Route>
+                <Route exact path="/menu" element={<MenuConnector />}></Route>
+                <Route exact path="/bill" element={<BillConnector />}></Route>
             </Routes>
-        </HashRouter>
-    );
-};
+        </main>
+        <footer className="footer">
+            <PartyConnector></PartyConnector>
+        </footer>
+    </HashRouter>
+);
 
 export default Root;

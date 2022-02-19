@@ -4,6 +4,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import Root from './client/components/root/Root';
 import store from './client/store';
+import './client/styles/index.scss';
 
 const httpLink = new HttpLink({ uri: 'http://localhost:3000/graphql' });
 const client = new ApolloClient({

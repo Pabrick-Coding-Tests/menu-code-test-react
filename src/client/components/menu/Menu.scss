@@ -1,0 +1,27 @@
+.menu {
+    background-color: lemonchiffon;
+    box-sizing: border-box;
+    padding: 30px;
+    height: 100%;
+    width: 80%;
+    margin: 40px auto 0 auto;
+
+    -webkit-box-shadow: 20px 20px 0px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 20px 20px 0px 0px rgba(0, 0, 0, 0.2);
+
+    &__title {
+        text-align: center;
+    }
+
+    &__courses {
+        .course {
+            &__title {
+                text-align: left;
+            }
+            &__list {
+                list-style: none;
+                padding: 0;
+            }
+        }
+    }
+}

@@ -1,4 +1,4 @@
-export const selectDiner = (quantity) => ({
+export const initDiner = (quantity) => ({
     type: 'INIT_DINER',
     quantity,
 });
