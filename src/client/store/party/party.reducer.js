@@ -1,3 +1,4 @@
+import { addDish, addToBill, createEmptyMatrix, removeDish } from './../../logic/logic';
 import initState from './init.state';
 
 const party = (party = initState, action) => {
@@ -44,20 +45,3 @@ const party = (party = initState, action) => {
 };
 
 export default party;
-
-function createEmptyMatrix(limit) {
-    console.log('createEmptyMatrix');
-    return new Array(limit).fill(new Array());
-}
-
-function addDish(diner, dish) {
-    return [...diner, dish];
-}
-
-function removeDish(diner, dish) {
-    return diner.filter((d) => d !== dish);
-}
-
-function addToBill(bill, amount) {
-    return bill + amount;
-}

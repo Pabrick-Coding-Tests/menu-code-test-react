@@ -1,5 +1,5 @@
 const initState = {
-    message: 'Ola ke ase, ola ke dise',
+    message: '',
 };
 
 export default initState;
