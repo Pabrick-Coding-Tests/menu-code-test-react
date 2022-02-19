@@ -1,4 +1,4 @@
-import initState from './../init.state';
+import initState from './init.state';
 
 const party = (party = initState, action) => {
     switch (action.type) {

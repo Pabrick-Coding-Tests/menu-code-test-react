@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { setCurrentGuest } from '../../store/actions/setCurrentGuest';
+import { setCurrentGuest } from '../../store/party/actions/setCurrentGuest';
 import Party from './Party';
 
 const mapStateToProps = (state) => ({

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { clearParty } from './../../store/actions/clearParty.action';
+import { clearParty } from './../../store/party/actions/clearParty.action';
 import Bill from './Bill';
 
 const mapStateToProps = (state) => ({

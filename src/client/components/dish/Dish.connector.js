@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { batchActions } from 'redux-batched-actions';
-import { addDish } from '../../store/actions/addDish.action';
-import { removeDish } from '../../store/actions/removeDish.action';
-import { setBill } from '../../store/actions/setBill.action';
+import { addDish } from '../../store/party/actions/addDish.action';
+import { removeDish } from '../../store/party/actions/removeDish.action';
+import { setBill } from '../../store/party/actions/setBill.action';
 import Dish from './Dish';
 
 const mapStateToProps = (state, ownProps) => {

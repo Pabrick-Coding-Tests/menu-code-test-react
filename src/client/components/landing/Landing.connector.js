@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { setGuests } from '../../store/actions/setGuests.action';
+import { setGuests } from '../../store/party/actions/setGuests.action';
 import Landing from './Landing';
 
 const mapStateToProps = (state) => ({
