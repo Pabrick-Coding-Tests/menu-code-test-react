@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
-import { setQuantity } from '../../store/actions/setQuantity.action';
+import { setGuests } from '../../store/actions/setGuests.action';
 import Landing from './Landing';
 
 const mapStateToProps = (state) => ({
-    quantity: state.party.quantity,
+    guests: state.party.guests,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    setQuantity: (quantity) => dispatch(setQuantity(quantity)),
+    setGuests: (guests) => dispatch(setGuests(guests)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);

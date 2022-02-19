@@ -4,12 +4,12 @@ import DishConnector from '../dish/Dish.connector';
 import { MENU_QUERY } from './../../querys/menu.query';
 import './Menu.scss';
 
-const Menu = ({ quantity, diner, initDiner }) => {
+const Menu = ({ guests, diner, setEmptyDiner }) => {
     const { data } = useQuery(MENU_QUERY);
 
     useEffect(() => {
         if (diner.length === 0) {
-            initDiner(quantity);
+            setEmptyDiner(guests);
         }
     }, []);
 

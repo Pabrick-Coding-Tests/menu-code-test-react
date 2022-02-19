@@ -2,34 +2,38 @@ import initState from './../init.state';
 
 const party = (party = initState, action) => {
     switch (action.type) {
-        case 'INIT_DINER':
+        case 'CLEAR_PARTY':
             return {
-                ...party,
-                diner: createEmptyMatrix(action.quantity),
+                ...initState,
             };
-        case 'SET_QUANTITY':
+        case 'SET_EMPTY_DINER':
             return {
                 ...party,
-                quantity: action.quantity,
+                diner: createEmptyMatrix(action.guests),
             };
-        case 'SELECT_GUEST':
+        case 'SET_GUESTS':
             return {
                 ...party,
-                guest: action.guest,
+                guests: action.guests,
             };
-        case 'CALCULATE_AMOUNT':
+        case 'SET_CURRENT_GUEST':
             return {
                 ...party,
-                amount: party.amount + action.amount,
+                currentGuest: action.currentGuest,
+            };
+        case 'SET_BILL':
+            return {
+                ...party,
+                bill: addToBill(party.bill, action.bill),
             };
         case 'ADD_DISH':
-            party.diner[party.guest - 1] = addDish(getDiner(party), action.id);
+            party.diner[party.currentGuest - 1] = addDish(party.diner[party.currentGuest - 1], action.id);
             return {
                 ...party,
                 diner: [...party.diner],
             };
         case 'REMOVE_DISH':
-            party.diner[party.guest - 1] = removeDish(getDiner(party), action.id);
+            party.diner[party.currentGuest - 1] = removeDish(party.diner[party.currentGuest - 1], action.id);
             return {
                 ...party,
                 diner: [...party.diner],
@@ -46,14 +50,14 @@ function createEmptyMatrix(limit) {
     return new Array(limit).fill(new Array());
 }
 
-function getDiner(party) {
-    return party.diner.at(party.guest - 1);
-}
-
 function addDish(diner, dish) {
     return [...diner, dish];
 }
 
 function removeDish(diner, dish) {
     return diner.filter((d) => d !== dish);
+}
+
+function addToBill(bill, amount) {
+    return bill + amount;
 }

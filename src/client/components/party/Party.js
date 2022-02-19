@@ -1,10 +1,11 @@
 import React from 'react';
 import { COLOURS } from '../../utils/colours.const';
+import { Link } from 'react-router-dom';
 import './Party.scss';
 
-const Party = ({ quantity, amount, guest, selectGuest }) => {
-    const isSelected = (i) => guest === i + 1;
-    const guestList = (limit) =>
+const Party = ({ currentGuest, guests, bill, selectGuest }) => {
+    const isSelected = (i) => currentGuest === i + 1;
+    const guestTemplate = (limit) =>
         new Array(limit).fill('_').map((_, index) => (
             <button
                 key={index}
@@ -20,8 +21,11 @@ const Party = ({ quantity, amount, guest, selectGuest }) => {
 
     return (
         <section className="party">
-            <div className="guests">{guestList(quantity)}</div>
-            <div className={`amount ${amount ? 'show' : ''}`}>£ {amount}</div>
+            <div className="party__guests">{guestTemplate(guests)}</div>
+            <div className={`party__bill ${bill ? 'show' : ''}`}>£ {bill}</div>
+            <Link className={`party__checkout ${bill ? 'show' : ''}`} to="/bill">
+                Checkout
+            </Link>
         </section>
     );
 };

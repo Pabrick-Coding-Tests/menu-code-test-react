@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
-import { setQuantity } from '../../store/actions/setQuantity.action';
+import { clearParty } from './../../store/actions/clearParty.action';
 import Bill from './Bill';
 
 const mapStateToProps = (state) => ({
-    quantity: state.party.quantity,
-    amount: state.party.amount,
+    bill: state.party.bill,
+    guests: state.party.guests,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    setQuantity: (quantity) => dispatch(setQuantity(quantity)),
+    clearParty: () => dispatch(clearParty()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bill);

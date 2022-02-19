@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
-import { selectGuest } from '../../store/actions/selectGuest';
+import { setCurrentGuest } from '../../store/actions/setCurrentGuest';
 import Party from './Party';
 
 const mapStateToProps = (state) => ({
-    quantity: state.party.quantity,
-    amount: state.party.amount,
-    guest: state.party.guest,
+    currentGuest: state.party.currentGuest,
+    guests: state.party.guests,
+    bill: state.party.bill,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    selectGuest: (guest) => dispatch(selectGuest(guest)),
+    selectGuest: (guest) => dispatch(setCurrentGuest(guest)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Party);

@@ -2,13 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Landing.scss';
 
-const Landing = ({ quantity, setQuantity }) => (
+const Landing = ({ guests, setGuests }) => (
     <div className="landing">
-        <h1 onClick={() => setQuantity(quantity)}>
+        <h1>
             Welcome to <br />
             'Le Restaurant'
         </h1>
-        <Link to="/menu">Start order for {quantity}</Link>
+        <Link to="/menu" onClick={() => setGuests(guests)}>
+            Start order for {guests}
+        </Link>
     </div>
 );
 

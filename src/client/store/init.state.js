@@ -1,7 +1,7 @@
 const initState = {
-    quantity: 2,
-    guest: 1,
-    amount: 0,
+    guests: 2,
+    currentGuest: 1,
+    bill: 0,
     diner: [],
 };
 

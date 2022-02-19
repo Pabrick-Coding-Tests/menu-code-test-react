@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Bill.scss';
 
-const Bill = ({ quantity, amount }) => (
+const Bill = ({ guests, bill, clearParty }) => (
     <main>
-        <h1>Total bill: {amount}</h1>
-        <Link onClick={() => setQuantity(quantity)} to="/landing">
+        <h1>Total bill: £{bill} </h1>
+        <h2>per Guest: £{bill / guests} </h2>
+        <Link to="/" onClick={() => clearParty()}>
             Start again
         </Link>
     </main>
