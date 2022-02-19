@@ -8,7 +8,7 @@ import Dish from './Dish';
 
 const mapStateToProps = (state, ownProps) => {
     const index = state.party.currentGuest - 1;
-    const guestDiner = state.party.diner[index];
+    const guestDiner = state.party.diner[index] || [];
     return {
         diner: state.party.diner,
         active: guestDiner.find((dish) => dish === ownProps.id) ? true : false,
