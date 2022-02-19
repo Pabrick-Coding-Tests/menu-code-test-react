@@ -6,8 +6,7 @@
     cursor: pointer;
     transition: all 0.2s linear;
 
-    margin: 4px 0;
-    padding: 4px 0;
+    padding: 4px;
     width: 100%;
     display: grid;
     align-items: center;
@@ -22,6 +21,7 @@
         grid-area: name;
         text-align: left;
         font-size: 1rem;
+        font-family: var(--font-primary);
     }
 
     .description {
@@ -35,6 +35,7 @@
         grid-area: price;
         text-align: right;
         font-size: 1rem;
+        font-family: var(--font-primary);
     }
 
     &:hover,

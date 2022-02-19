@@ -11,7 +11,7 @@ const Menu = ({ guests, diner, setEmptyDiner }) => {
         if (diner.length === 0) {
             setEmptyDiner(guests);
         }
-    }, []);
+    }, [guests]);
 
     const dishTemplate = (list) =>
         list.map(({ id, name, price }) => (
@@ -32,9 +32,7 @@ const Menu = ({ guests, diner, setEmptyDiner }) => {
             return (
                 <div>
                     {courseTemplate('Starters', data.menu.starters)}
-                    <hr></hr>
                     {courseTemplate('Mains', data.menu.mains)}
-                    <hr></hr>
                     {courseTemplate('Desserts', data.menu.desserts)}
                 </div>
             );

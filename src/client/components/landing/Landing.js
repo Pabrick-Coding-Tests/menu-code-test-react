@@ -4,11 +4,11 @@ import './Landing.scss';
 
 const Landing = ({ guests, setGuests }) => (
     <div className="landing">
-        <h1>
+        <h1 className="landing__title">
             Welcome to <br />
             'Le Restaurant'
         </h1>
-        <Link to="/menu" onClick={() => setGuests(guests)}>
+        <Link className="landing__button" to="/menu" onClick={() => setGuests(guests)}>
             Start order for {guests}
         </Link>
     </div>
