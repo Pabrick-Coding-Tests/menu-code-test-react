@@ -6,6 +6,7 @@ const party = (party = initState, action) => {
         case 'CLEAR_PARTY':
             return {
                 ...initState,
+                diner: [],
             };
         case 'SET_EMPTY_DINER':
             return {
