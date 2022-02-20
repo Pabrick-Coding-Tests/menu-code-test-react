@@ -1,0 +1,46 @@
+.bill {
+    position: absolute;
+    box-sizing: border-box;
+
+    position: relative;
+    background-color: white;
+    aspect-ratio: 16 /9;
+    width: 50%;
+    margin: 3rem auto;
+    padding: 2rem 2rem 3rem;
+
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    &__total {
+        font-family: var(--font-primary);
+        font-size: 2rem;
+    }
+
+    &__per-guest {
+        font-family: var(--font-primary);
+        font-size: 1.5rem;
+    }
+
+    &__button {
+        background-color: var(--colour-primary);
+        color: #000000;
+        font-family: var(--font-primary);
+        font-size: 1rem;
+        width: 50%;
+        margin: 1rem auto 0 auto;
+
+        border-radius: 2rem;
+        padding: 1rem 2rem;
+
+        -webkit-box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+            background-color: var(--colour-secondary);
+            color: #ffffff;
+        }
+    }
+}
