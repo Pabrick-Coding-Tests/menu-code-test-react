@@ -1,3 +1,7 @@
+## Please find the approach taken at the end of this file
+
+---
+
 # OpenTable front-end coding challenge
 
 Thank you for accepting our coding challenge. Please take as much time as required to give us a good indication of your coding strengths, as your application will provide many topics of conversation in the next interview stage.
@@ -36,3 +40,28 @@ This restaurant, unfortunately, has a number of rules about the meals that can b
 ## Submission
 
 Please submit your program as an online repository or downloadable link to your point of contact at OpenTable.
+
+---
+
+# The Aproach
+
+After reading the rules the first step is design the wireflow of the app and identify the components that the app needs.
+I have identify a landing page, a menu page and like we need to check if the combination chosen on the menu page I thought a good idea will be to have a final page.
+The most complex page is the menu, which it will have the dish component, and to solve the problem of haveing different guests another component that help as to switch between the and reuse the same page for different guests.
+
+Now that we know how our app will be it's coding time!
+
+First thing I like to do is checking that the data is been retrieved from the database correctly.
+After fixing a CORS problem, the app could now read all the menu provided.
+Then I created the routes for my different pages: landing, menu and bill.
+After the whole path was working is time to build the components and add a little bit styling, just to check that the Sass library was working.
+Now it's time to prepared the app for the store where we can put the data shared accross the app.
+I add the actions, reducers and the rest.
+The app works without rules, so the last bit will be to add the extra logic and the popup we need to show the user if something has gone wrong.
+When that is done we are ready to style the app a little bit more.
+
+## Things that left
+
+- **Testing** the whole app. Create unit testing for each component, test the comunication between the and the store and test that the logic applied works. I should have install JEST and another library like Enzyme, or RTL. In this case RTL because Enzyme do not support React 17.
+- Create a **style theme**, with more architecture, and styled classes for elements.
+- Reorganise the **logic**: I am a huge fan of simple components, for that the logic should be placed in somewhere else, like a service or other technique.
